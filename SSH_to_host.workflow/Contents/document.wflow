@@ -174,7 +174,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>351.500000:185.000000</string>
+				<string>359.000000:185.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/English.lproj/main.nib</string>
 			</dict>
@@ -222,7 +222,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>source</key>
-					<string>on run {input, parameters}	--Show a list of Hosts from ssh-config.	set TheList to {}	repeat with AnItem in the input		set the end of TheList to (AnItem as text)	end repeat	choose from list TheList	if the result is not false then		return item 1 of the result	end ifend run</string>
+					<string>on run {input, parameters}	--Show a list of Hosts from ssh-config.	set TheList to {}	repeat with AnItem in the input		set the end of TheList to (AnItem as text)	end repeat	choose from list TheList	if the result is false then		return	else		set sshCommand to item 1 of the result	end if		-- Tell the Terminal to SSH to the host passed to input.	tell application "Terminal"		activate		-- Get a window that's not busy.		-- If there are no open windows, open one.		if (count of windows) is greater than 0 then			repeat with currentWindow in windows				if currentWindow is not busy then					set targetWindow to currentWindow				end if			end repeat		else			do script ""			set targetWindow to window 1		end if				-- Open a new tab.		tell application "System Events" to tell process "Terminal" to keystroke "t" using command down				do script "exec ssh " &amp; sshCommand in front window	end tell	end run</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.RunScript</string>
@@ -276,109 +276,7 @@ end run</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>351.500000:431.000000</string>
-				<key>nibPath</key>
-				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/Base.lproj/main.nib</string>
-			</dict>
-			<key>isViewVisible</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>action</key>
-			<dict>
-				<key>AMAccepts</key>
-				<dict>
-					<key>Container</key>
-					<string>List</string>
-					<key>Optional</key>
-					<true/>
-					<key>Types</key>
-					<array>
-						<string>com.apple.applescript.object</string>
-					</array>
-				</dict>
-				<key>AMActionVersion</key>
-				<string>1.0.2</string>
-				<key>AMApplication</key>
-				<array>
-					<string>Automator</string>
-				</array>
-				<key>AMParameterProperties</key>
-				<dict>
-					<key>source</key>
-					<dict/>
-				</dict>
-				<key>AMProvides</key>
-				<dict>
-					<key>Container</key>
-					<string>List</string>
-					<key>Types</key>
-					<array>
-						<string>com.apple.applescript.object</string>
-					</array>
-				</dict>
-				<key>ActionBundlePath</key>
-				<string>/System/Library/Automator/Run AppleScript.action</string>
-				<key>ActionName</key>
-				<string>Run AppleScript</string>
-				<key>ActionParameters</key>
-				<dict>
-					<key>source</key>
-					<string>on run {input, parameters}	-- Tell the Terminal to SSH to the host passed to input.	tell application "Terminal"		activate		-- Get a window that's not busy.		-- If there are no open windows, open one.		if (count of windows) is greater than 0 then			repeat with currentWindow in windows				if currentWindow is not busy then					set targetWindow to currentWindow				end if			end repeat		else			do script ""			set targetWindow to window 1		end if				-- Open a new tab.		tell application "System Events" to tell process "Terminal" to keystroke "t" using command down				do script "exec ssh " &amp; input in front window	end tellend run</string>
-				</dict>
-				<key>BundleIdentifier</key>
-				<string>com.apple.Automator.RunScript</string>
-				<key>CFBundleVersion</key>
-				<string>1.0.2</string>
-				<key>CanShowSelectedItemsWhenRun</key>
-				<false/>
-				<key>CanShowWhenRun</key>
-				<true/>
-				<key>Category</key>
-				<array>
-					<string>AMCategoryUtilities</string>
-				</array>
-				<key>Class Name</key>
-				<string>RunScriptAction</string>
-				<key>InputUUID</key>
-				<string>4DD05BB0-8133-4022-80E6-8FCDFCB8BED4</string>
-				<key>Keywords</key>
-				<array>
-					<string>Run</string>
-				</array>
-				<key>OutputUUID</key>
-				<string>76D4F2E1-D1A7-49D5-BA90-5CAA838C423D</string>
-				<key>UUID</key>
-				<string>E8138F2C-7275-452D-8672-95E8EE00122E</string>
-				<key>UnlocalizedApplications</key>
-				<array>
-					<string>Automator</string>
-				</array>
-				<key>arguments</key>
-				<dict>
-					<key>0</key>
-					<dict>
-						<key>default value</key>
-						<string>on run {input, parameters}
-	
-	(* Your script goes here *)
-	
-	return input
-end run</string>
-						<key>name</key>
-						<string>source</string>
-						<key>required</key>
-						<string>0</string>
-						<key>type</key>
-						<string>0</string>
-						<key>uuid</key>
-						<string>0</string>
-					</dict>
-				</dict>
-				<key>isViewVisible</key>
-				<true/>
-				<key>location</key>
-				<string>351.500000:677.000000</string>
+				<string>359.000000:483.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -388,14 +286,7 @@ end run</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>378FAF43-951A-43F4-A949-E6995881D917</key>
-		<dict>
-			<key>from</key>
-			<string>A0D6B6E6-EE77-4B11-8F79-9A4ECE99FE9C - A0D6B6E6-EE77-4B11-8F79-9A4ECE99FE9C</string>
-			<key>to</key>
-			<string>E8138F2C-7275-452D-8672-95E8EE00122E - E8138F2C-7275-452D-8672-95E8EE00122E</string>
-		</dict>
-		<key>FF286343-F494-4B13-9085-A7FF60742599</key>
+		<key>8BAB9E29-E7B8-41FB-BF65-A34A83F94467</key>
 		<dict>
 			<key>from</key>
 			<string>B0F9A64B-DEB5-4466-AE1D-CDBE13649B44 - B0F9A64B-DEB5-4466-AE1D-CDBE13649B44</string>
